@@ -115,6 +115,7 @@ namespace WindowsFormsApplicationDB1
             // 
             // TODO: Attribute aus DataReader gebildet werden
             return a;
+            // GIT TEST
         }
         public Object checkDBnull(object o)
         {
@@ -134,6 +135,8 @@ namespace WindowsFormsApplicationDB1
                 {
                     
                     updateArtikel(a);
+                    listBoxAusgabe.DataSource = null;
+                    listBoxAusgabe.DataSource = artikellist;
                 }
                 else
                 {
@@ -170,6 +173,13 @@ namespace WindowsFormsApplicationDB1
                 MessageBox.Show("Fehler beim Update");
                 toolStripStatusLabel1.Text = exc.Message;
             }
+        }
+
+        private void buttonNeuerDatensatz_Click(object sender, EventArgs e)
+        {
+            Artikel a = new Artikel();
+            FormInsert frmInsert = new FormInsert(con,a);
+            frmInsert.ShowDialog();
         }
     }
 }

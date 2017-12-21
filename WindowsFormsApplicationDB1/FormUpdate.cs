@@ -81,5 +81,11 @@ namespace WindowsFormsApplicationDB1
             SelArtikel.LetzteEntnahme = Convert.ToDateTime(textBoxLetzteEntnahme.Text);
             this.Close();
         }
+
+        private void buttonTextOpen_Click(object sender, EventArgs e)
+        {
+            textBoxArtikelGruppe.Enabled = true;
+            textBoxVerpackung.Enabled = true;
+        }
     }
 }
