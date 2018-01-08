@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.OleDb;
+using System.Globalization;
 
 namespace WindowsFormsApplicationDB1
 {
@@ -180,6 +181,36 @@ namespace WindowsFormsApplicationDB1
             Artikel a = new Artikel();
             FormInsert frmInsert = new FormInsert(con,a);
             frmInsert.ShowDialog();
+            if(a != null)
+            {
+                InsertArtikel(a);
+            }
+        }
+        private void InsertArtikel(Artikel a)
+        {
+            OleDbCommand cmd = con.CreateCommand();
+            cmd.Parameters.AddWithValue("ANR", a.ArtikelNr);
+            cmd.Parameters.AddWithValue("AGR", a.ArtikelGruppe);
+            cmd.Parameters.AddWithValue("BEZ", a.Bezeichnung);
+            cmd.Parameters.AddWithValue("BST", a.Bestand);
+            cmd.Parameters.AddWithValue("MBST", a.Meldebestand);
+            cmd.Parameters.AddWithValue("VERP", a.Verpackung);
+            String vkp = a.Vkpreis.ToString();
+            cmd.Parameters.AddWithValue("VKP", a.Vkpreis.ToString(new CultureInfo("de-DE")));
+            cmd.Parameters.AddWithValue("LTZ", a.LetzteEntnahme);
+
+            String sql = "INSERT INTO tArtikel(ArtikelNr,ArtikelGruppe,Bezeichnung,Bestand,Meldebestand,Verpackung,Vkpreis,LetzteEntnahme) ";
+            sql += "VALUES(ANR,AGR,BEZ,BST,MBST,VERP,VKP,LTZ)";
+            cmd.CommandText = sql;
+            try
+            {
+                cmd.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                
+            }
         }
     }
 }

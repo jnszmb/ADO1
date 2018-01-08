@@ -37,6 +37,7 @@ namespace WindowsFormsApplicationDB1
         public FormInsert(OleDbConnection con, Artikel artikel) : this()
         {
             this.con = con; // Connection übergeben
+            a = artikel;
             InitializeControls();
         }
         public void InitializeControls()
@@ -67,6 +68,28 @@ namespace WindowsFormsApplicationDB1
         private void buttonCancel_Click(object sender, EventArgs e)
         {
             this.Result = DialogResult.Cancel;
+            this.Close();
+        }
+
+        private void buttonOk_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                a.ArtikelNr = textBoxArtikelNr.Text;
+                a.ArtikelGruppe = ((Artikelgruppe)comboBoxArtikelGruppe.SelectedItem).ArtGruppe;
+                a.Bestand = Convert.ToByte(textBoxBestand.Text);
+                a.Meldebestand = Convert.ToInt16(textBoxMeldebestand.Text);
+                a.Bezeichnung = textBoxBezeichnung.Text;
+                a.Verpackung = ((Verpackung)comboBoxVerpackung.SelectedItem).VerpackungsId;
+                a.LetzteEntnahme = dateTimePicker1.Value;
+                a.Vkpreis = Convert.ToDecimal(textBoxVkPreis.Text);
+
+            }
+            catch (Exception)
+            {
+
+                a = null;
+            }
             this.Close();
         }
     }
