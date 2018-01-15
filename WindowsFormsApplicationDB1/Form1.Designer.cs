@@ -36,6 +36,9 @@
             this.listBoxAusgabe = new System.Windows.Forms.ListBox();
             this.buttonUpdate = new System.Windows.Forms.Button();
             this.buttonNeuerDatensatz = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.textBoxBezirk = new System.Windows.Forms.TextBox();
+            this.buttonNeuerBezirk = new System.Windows.Forms.Button();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -112,11 +115,40 @@
             this.buttonNeuerDatensatz.UseVisualStyleBackColor = true;
             this.buttonNeuerDatensatz.Click += new System.EventHandler(this.buttonNeuerDatensatz_Click);
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(231, 39);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(36, 13);
+            this.label1.TabIndex = 7;
+            this.label1.Text = "Bezirk";
+            // 
+            // textBoxBezirk
+            // 
+            this.textBoxBezirk.Location = new System.Drawing.Point(291, 37);
+            this.textBoxBezirk.Name = "textBoxBezirk";
+            this.textBoxBezirk.Size = new System.Drawing.Size(135, 20);
+            this.textBoxBezirk.TabIndex = 8;
+            // 
+            // buttonNeuerBezirk
+            // 
+            this.buttonNeuerBezirk.Location = new System.Drawing.Point(449, 34);
+            this.buttonNeuerBezirk.Name = "buttonNeuerBezirk";
+            this.buttonNeuerBezirk.Size = new System.Drawing.Size(77, 22);
+            this.buttonNeuerBezirk.TabIndex = 9;
+            this.buttonNeuerBezirk.Text = "Neu";
+            this.buttonNeuerBezirk.UseVisualStyleBackColor = true;
+            this.buttonNeuerBezirk.Click += new System.EventHandler(this.buttonNeuerBezirk_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(708, 434);
+            this.Controls.Add(this.buttonNeuerBezirk);
+            this.Controls.Add(this.textBoxBezirk);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.buttonNeuerDatensatz);
             this.Controls.Add(this.buttonUpdate);
             this.Controls.Add(this.listBoxAusgabe);
@@ -143,6 +175,9 @@
         private System.Windows.Forms.ListBox listBoxAusgabe;
         private System.Windows.Forms.Button buttonUpdate;
         private System.Windows.Forms.Button buttonNeuerDatensatz;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox textBoxBezirk;
+        private System.Windows.Forms.Button buttonNeuerBezirk;
     }
 }
 

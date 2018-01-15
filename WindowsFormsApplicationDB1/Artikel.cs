@@ -18,6 +18,9 @@ namespace WindowsFormsApplicationDB1
         private Decimal vkpreis;
         private DateTime letzteEntnahme;
 
+        public delegate void BestellMeldung(String meldung);
+        public BestellMeldung onUpdateError;
+
         public Artikel()
         {
             this.ArtikelNr = String.Empty;
@@ -92,6 +95,13 @@ namespace WindowsFormsApplicationDB1
             set
             {
                 bestand = value;
+                if(bestand <= this.Meldebestand)
+                {
+                    if(onUpdateError != null)
+                    {
+                        onUpdateError("Meldebestand erreicht");
+                    }
+                }
             }
         }
 

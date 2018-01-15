@@ -130,6 +130,7 @@ namespace WindowsFormsApplicationDB1
             if(listBoxAusgabe.SelectedItem != null)
             {
                 Artikel a = (Artikel)listBoxAusgabe.SelectedItem;
+                a.onUpdateError = MeldeBestand;
                 FormUpdate frmUpdate = new FormUpdate(a);
                 frmUpdate.ShowDialog(); // modales Fensters -> man kann nicht aufs andere Fenster klicken wenn das geöffnet
                 if(frmUpdate.Result == DialogResult.OK)
@@ -211,6 +212,24 @@ namespace WindowsFormsApplicationDB1
                 MessageBox.Show(ex.Message);
                 // GIT TEST
             }
+        }
+
+        private void buttonNeuerBezirk_Click(object sender, EventArgs e)
+        {
+            OleDbCommand cmd = con.CreateCommand();
+            cmd.CommandText = "Insert into tBezirk(Bezirk) Values('" + textBoxBezirk.Text + "')";
+            cmd.CommandType = CommandType.Text;
+            cmd.ExecuteNonQuery();
+
+            cmd.CommandText = "SELECT @@IDENTITY From tBezirk"; //fragt ab was der letzte hinzugefügte Autowert ab
+            Int32 id = Convert.ToInt32(cmd.ExecuteScalar());
+
+            MessageBox.Show("Satz wurde mit ID =" + id.ToString() + " eigefügt");
+        }
+
+        private void MeldeBestand(String message)
+        {
+            MessageBox.Show(message);
         }
     }
 }
